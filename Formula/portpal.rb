@@ -1,8 +1,8 @@
 class Portpal < Formula
   desc "Manage forwarded SSH ports from the CLI and a macOS menu bar app"
   homepage "https://github.com/itsfrank/portpal"
-  url "https://github.com/itsfrank/portpal/releases/download/v0.1.0/portpal-cli.tar.gz"
-  sha256 "7e2a1d57c973994e73e21cf4310a1493db3c30d102a872d6e7324fc36217faf2"
+  url "https://github.com/itsfrank/portpal/releases/download/v0.1.1/portpal-cli.tar.gz"
+  sha256 "cd034964205f74731ec9be4340ed603eae746be8352988c4b212332733ad6291"
   license "MIT"
 
   depends_on :macos
