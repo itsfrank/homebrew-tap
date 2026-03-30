@@ -12,7 +12,7 @@ PROJECTS = {
     repo: "itsfrank/portpal",
     formula_path: "Formula/portpal.rb",
     formula_asset_name: "portpal-cli.tar.gz",
-    cask_path: "Casks/portpal.rb",
+    cask_path: "Casks/portpal-app.rb",
     cask_asset_name: "Portpal.app.zip",
   },
 }.freeze
