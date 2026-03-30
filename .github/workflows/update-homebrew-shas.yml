@@ -1,0 +1,56 @@
+name: Update Homebrew SHAs
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Project to update in this tap
+        required: true
+        type: choice
+        options:
+          - portpal
+      version:
+        description: Release version to sync, with or without leading v
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+
+      - name: Update formula and cask SHAs
+        id: update
+        run: ruby scripts/update-homebrew-release.rb "${{ inputs.project }}" "${{ inputs.version }}"
+
+      - name: Normalize version
+        id: version
+        run: |
+          version="${{ inputs.version }}"
+          echo "value=${version#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update ${{ inputs.project }} Homebrew metadata for v${{ steps.version.outputs.value }}
+          branch: automation/update-${{ inputs.project }}-v${{ steps.version.outputs.value }}
+          delete-branch: true
+          title: Update ${{ inputs.project }} Homebrew metadata for v${{ steps.version.outputs.value }}
+          body: |
+            ## Summary
+
+            - update `${{ inputs.project }}` Homebrew metadata to `v${{ steps.version.outputs.value }}`
+            - refresh the formula source tarball SHA256
+            - refresh the cask asset SHA256

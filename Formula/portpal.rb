@@ -1,19 +1,15 @@
 class Portpal < Formula
   desc "Manage forwarded SSH ports from the CLI and a macOS menu bar app"
   homepage "https://github.com/itsfrank/portpal"
-  url "https://github.com/itsfrank/portpal/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "b5fa7c4e21f92689e067767b35007d2058a70b3322ef535fc73beaef695ea221"
+  url "https://github.com/itsfrank/portpal/releases/download/v0.1.0/portpal-cli.tar.gz"
+  sha256 "7e2a1d57c973994e73e21cf4310a1493db3c30d102a872d6e7324fc36217faf2"
   license "MIT"
-  head "https://github.com/itsfrank/portpal.git", branch: "main"
 
   depends_on :macos
-  depends_on xcode: ["15.0", :build]
 
   def install
-    system "swift", "build", "-c", "release", "--product", "portpal", "--product", "PortpalService"
-
-    libexec.install ".build/release/PortpalService" => "Portpal/PortpalService"
-    libexec.install ".build/release/portpal" => "portpal-bin"
+    libexec.install "PortpalService" => "Portpal/PortpalService"
+    libexec.install "portpal" => "portpal-bin"
 
     (bin/"portpal").write_env_script libexec/"portpal-bin",
       PORTPAL_SERVICE_PATH: libexec/"Portpal/PortpalService"
