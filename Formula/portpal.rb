@@ -8,7 +8,8 @@ class Portpal < Formula
   depends_on :macos
 
   def install
-    libexec.install "PortpalService" => "Portpal/PortpalService"
+    (libexec/"Portpal").mkpath
+    (libexec/"Portpal").install "PortpalService"
     libexec.install "portpal" => "portpal-bin"
 
     (bin/"portpal").write_env_script libexec/"portpal-bin",
