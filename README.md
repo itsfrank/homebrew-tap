@@ -9,12 +9,30 @@ Portpal is the first package distributed from this tap.
 ```bash
 brew tap itsfrank/tap
 brew install itsfrank/tap/portpal
+brew services start portpal
+
 brew install --cask itsfrank/tap/portpal-app
+```
+
+Portpal releases currently publish Apple Silicon macOS artifacts and require macOS 14 or newer.
+
+The intended install model is:
+
+- `portpal` formula installs the Rust CLI client and daemon entrypoint
+- `brew services start portpal` runs `portpal serve`
+- `portpal-app` cask installs `Portpal.app`
+
+Common CLI commands:
+
+```bash
+portpal config path
+portpal list
+portpal reload
 ```
 
 ## Packages
 
-- `portpal` - CLI formula
+- `portpal` - CLI formula and background service
 - `portpal-app` - macOS app cask
 
 Portpal source lives in the separate repository at `https://github.com/itsfrank/portpal`.
@@ -23,7 +41,7 @@ Install both if you want the CLI and the app side-by-side without Homebrew link 
 
 ## Release Notes
 
-The tap is currently set up for `v0.1.2` of Portpal.
+The tap is currently set up for `v0.2.0` of Portpal.
 
 When publishing a new release:
 
