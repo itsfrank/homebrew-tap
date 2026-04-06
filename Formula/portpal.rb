@@ -1,8 +1,8 @@
 class Portpal < Formula
   desc "CLI and background service for managing forwarded SSH ports"
   homepage "https://github.com/itsfrank/portpal"
-  url "https://github.com/itsfrank/portpal/releases/download/v0.2.2/portpal-cli.tar.gz"
-  sha256 "b9a5f3c52618f4de45b0f5c153ba7a77b96809ece85f8b37e38f00bae4170350"
+  url "https://github.com/itsfrank/portpal/releases/download/v0.2.3/portpal-cli.tar.gz"
+  sha256 "4975865cd71b01c20d9e6f2c84c8c780278116c00e0f926fbed21139f74e2e9a"
   license "MIT"
 
   depends_on arch: :arm64

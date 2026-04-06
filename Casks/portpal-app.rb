@@ -1,6 +1,6 @@
 cask "portpal-app" do
-  version "0.2.2"
-  sha256 "987fba3b8a64038e59e28415fa7e5ae9b552552a786713af1c4dbc54319ed0c4"
+  version "0.2.3"
+  sha256 "19ce75091d6a38dae80e1980f26e83c90a26d06276dad5b53e10c364e280ad81"
 
   url "https://github.com/itsfrank/portpal/releases/download/v#{version}/Portpal.app.zip"
   name "Portpal"
