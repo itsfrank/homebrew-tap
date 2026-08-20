@@ -14,13 +14,14 @@ class Portpal < Formula
 
   service do
     run [opt_bin/"portpal", "serve"]
+    environment_variables HOME: Dir.home
     keep_alive true
     log_path var/"log/portpal.log"
     error_log_path var/"log/portpal.log"
   end
 
   test do
-    expected_path = testpath/"Library/Application Support/Portpal/config.toml"
-    assert_equal expected_path.to_s, shell_output("#{bin}/portpal config path").strip
+    expected_path = testpath/".config/portpal/portpal.toml"
+    assert_equal expected_path.to_s, shell_output("env HOME=#{testpath} #{bin}/portpal config path").strip
   end
 end
