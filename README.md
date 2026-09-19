@@ -11,10 +11,12 @@ brew tap itsfrank/tap
 brew install itsfrank/tap/portpal
 brew services start portpal
 
+brew install itsfrank/tap/lute
+
 brew install --cask itsfrank/tap/portpal-app
 ```
 
-Portpal releases currently publish Apple Silicon macOS artifacts and require macOS 14 or newer.
+Portpal releases currently publish Apple Silicon macOS artifacts and require macOS 14 or newer. Lute currently publishes Apple Silicon macOS artifacts and requires macOS 12 or newer.
 
 The intended install model is:
 
@@ -34,6 +36,7 @@ portpal reload
 
 - `portpal` - CLI formula and background service
 - `portpal-app` - macOS app cask
+- `lute` - standalone Luau runtime
 
 Portpal source lives in the separate repository at `https://github.com/itsfrank/portpal`.
 
